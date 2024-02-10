@@ -1,0 +1,37 @@
+---
+import AsideMenuItem from './AsideMenuItem.astro';
+import IconHome from './icons/IconHome.astro';
+import IconLibrery from './icons/IconLibrery.astro';
+import IconSearch from './icons/IconSearch.astro';
+import {playlists} from './lib/data.ts';
+import AsideMenuCard from './AsideMenuCard.astro';
+---
+
+<nav class="flex flex-col flex-1 gap-2">
+    <div class="bg-slate-200 dark:bg-slate-800 rounded-lg p-2">
+        <ul>
+            <AsideMenuItem href='#'>
+                <IconHome />
+                Home
+            </AsideMenuItem>
+            <AsideMenuItem href='#'>
+                <IconSearch />
+                Search
+            </AsideMenuItem>
+        </ul>
+    </div>
+    <div class="bg-slate-200 dark:bg-slate-800 rounded-lg p-2 flex-1">
+        <ul>
+            <AsideMenuItem href='#'>
+                <IconLibrery />
+                Tu Biblioteca
+            </AsideMenuItem>
+
+            {
+                playlists.map(playlist => (
+                    <AsideMenuCard playlist={playlist} />
+                ))
+            }
+        </ul>
+    </div>
+</nav>
